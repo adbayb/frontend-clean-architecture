@@ -1,0 +1,52 @@
+{
+  "name": "frontend-clean-architecture",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A frontend clean architecture proposal to enforce a loosely coupled business logic",
+  "source": "src/index.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "start": "scripts serve public/index.html",
+    "build": "scripts build",
+    "watch": "scripts watch",
+    "clean": "scripts clean",
+    "verify": "scripts verify",
+    "fix": "scripts fix",
+    "test": "scripts verify --only test"
+  },
+  "devDependencies": {
+    "@adbayb/scripts": "0.14.0",
+    "@types/react": "18.0.10",
+    "@types/react-dom": "18.0.5",
+    "typescript": "4.7.2"
+  },
+  "dependencies": {
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
+  },
+  "author": {
+    "name": "Ayoub Adib",
+    "email": "adbayb@gmail.com",
+    "url": "https://twitter.com/adbayb"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adbayb/frontend-clean-architecture.git"
+  },
+  "keywords": [
+    "clean",
+    "architecture",
+    "frontend"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adbayb/frontend-clean-architecture/issues"
+  },
+  "homepage": "https://github.com/adbayb/frontend-clean-architecture#readme",
+  "prettier": "@adbayb/prettier-config",
+  "eslintConfig": {
+    "extends": "@adbayb",
+    "root": true
+  }
+}
