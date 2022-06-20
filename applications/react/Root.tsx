@@ -2,13 +2,13 @@ import { useState } from "react";
 import {
 	createGetPropertiesInteractor,
 	createGetPropertiesPresenter,
-	inMemoryPropertyGateway,
+	createInMemoryPropertyGateway,
 } from "../../modules/listing";
 
 export const Root = () => {
 	const [properties, setProperties] = useState();
 	const presenter = createGetPropertiesPresenter(setProperties);
-	const gateway = inMemoryPropertyGateway;
+	const gateway = createInMemoryPropertyGateway();
 	const getProperties = createGetPropertiesInteractor(gateway, presenter);
 
 	console.log("Updated", properties);

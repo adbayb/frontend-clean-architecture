@@ -1,4 +1,4 @@
-import { AggregateRoot } from "../../../../../sharedKernel/AggregateRoot";
+import { AggregateRoot } from "../../../../sharedKernel/AggregateRoot";
 import { Owner } from "./Owner";
 
 // @note: Property is an aggregate root by including Owner entity since

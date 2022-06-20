@@ -1,4 +1,4 @@
-import { Entity } from "../../../../sharedKernel/Entity";
+import { Entity } from "../../../sharedKernel/Entity";
 import { Property } from "./Property";
 
 export type Seeker = Entity<{

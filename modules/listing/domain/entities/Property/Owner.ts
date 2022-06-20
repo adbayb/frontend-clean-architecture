@@ -1,4 +1,4 @@
-import { Entity } from "../../../../../sharedKernel/Entity";
+import { Entity } from "../../../../sharedKernel/Entity";
 
 export type Owner = Entity<{
 	firstname: string;

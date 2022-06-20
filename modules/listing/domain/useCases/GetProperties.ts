@@ -2,7 +2,7 @@ import {
 	UseCaseInputPort,
 	UseCaseInteractor,
 	UseCaseOutputPort,
-} from "../../../../sharedKernel/UseCase";
+} from "../../../sharedKernel/UseCase";
 import { Property, PropertyGatewayPort } from "../entities/Property";
 
 /**
