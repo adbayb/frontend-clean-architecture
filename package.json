@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "description": "A frontend clean architecture proposal to enforce a loosely coupled business logic",
-  "source": "src/index.ts",
+  "source": "applications/react/index.ts",
   "main": "dist/index.cjs.js",
   "module": "dist/index.mjs",
   "scripts": {
@@ -47,6 +47,9 @@
   "prettier": "@adbayb/prettier-config",
   "eslintConfig": {
     "extends": "@adbayb",
-    "root": true
+    "root": true,
+    "rules": {
+      "@typescript-eslint/ban-types": "off"
+    }
   }
 }
