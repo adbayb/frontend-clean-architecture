@@ -8,10 +8,10 @@ import { Property, PropertyGatewayPort } from "../entities/Property";
 /**
  * Ports definition
  */
-export type GetPropertiesInputPort = UseCaseInputPort<{}>;
+export type GetPropertiesInputPort = UseCaseInputPort;
 export type GetPropertiesOutputPort = UseCaseOutputPort<
 	Array<Property>,
-	{ price: number }
+	Array<{ price: number }>
 >;
 
 /**
