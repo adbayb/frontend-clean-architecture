@@ -16,8 +16,5 @@ export const createGetPropertiesPresenter = (
 		presentError(error) {
 			console.error(error);
 		},
-		presentLoading(isLoading) {
-			return isLoading;
-		},
 	};
 };

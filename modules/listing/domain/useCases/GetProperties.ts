@@ -1,6 +1,5 @@
 import {
 	UseCaseInputPort,
-	UseCaseInteractor,
 	UseCaseOutputPort,
 } from "../../../sharedKernel/UseCase";
 import { Property, PropertyGatewayPort } from "../entities/Property";
@@ -20,12 +19,12 @@ export type GetPropertiesOutputPort = UseCaseOutputPort<
 export const createGetPropertiesInteractor = (
 	gateway: PropertyGatewayPort,
 	presenter: GetPropertiesOutputPort
-): UseCaseInteractor<GetPropertiesInputPort> => {
+): GetPropertiesInputPort => {
 	return function getProperties() {
 		try {
-			presenter.present(gateway.getMany());
+			presenter.ok(gateway.getMany());
 		} catch (error) {
-			presenter.presentError(error as Error);
+			presenter.fail("An error occurred");
 		}
 	};
 };
