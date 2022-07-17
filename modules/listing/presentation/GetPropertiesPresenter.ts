@@ -1,19 +1,29 @@
 import { GetPropertiesOutputPort } from "../domain/useCases/GetProperties";
 
+/**
+ * interface ViewModel extends Presenter, Controller {
+ * 	get(): GetPropertiesDTO;
+ * }
+ *
+ * interface Presenter<InteractorOutputPort> extends InteractorOutputPort {
+ *	notify()
+ *	subscribe()
+ * }
+ *
+ * interface Controller<InteractorInputPort> {
+ * 	execute(interactor: InteractorInputPort): void
+ * }
+ */
 export const createGetPropertiesPresenter = (
 	setState: (value: any) => void
 ): GetPropertiesOutputPort => {
 	return {
-		present(entities) {
-			const dto = entities.map((entity) => ({
-				price: entity.price,
-			}));
+		ok(responseModel) {
+			setState(responseModel);
 
-			setState(dto);
-
-			return dto;
+			return responseModel;
 		},
-		presentError(error) {
+		fail(error) {
 			console.error(error);
 		},
 	};

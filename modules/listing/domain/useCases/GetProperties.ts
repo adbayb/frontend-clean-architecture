@@ -2,16 +2,19 @@ import {
 	UseCaseInputPort,
 	UseCaseOutputPort,
 } from "../../../sharedKernel/UseCase";
-import { Property, PropertyGatewayPort } from "../entities/Property";
+import { PropertyGatewayPort } from "../entities/Property";
 
 /**
  * Ports definition
  */
-export type GetPropertiesInputPort = UseCaseInputPort;
-export type GetPropertiesOutputPort = UseCaseOutputPort<
-	Array<Property>,
-	Array<{ price: number }>
->;
+type GetPropertiesRequestModel = void;
+
+type GetPropertiesResponseModel = Array<{ price: number }>;
+
+export type GetPropertiesInputPort =
+	UseCaseInputPort<GetPropertiesRequestModel>;
+export type GetPropertiesOutputPort =
+	UseCaseOutputPort<GetPropertiesResponseModel>;
 
 /**
  * Service definition
@@ -22,7 +25,14 @@ export const createGetPropertiesInteractor = (
 ): GetPropertiesInputPort => {
 	return function getProperties() {
 		try {
-			presenter.ok(gateway.getMany());
+			const entities = gateway.getMany();
+			const responseModel: GetPropertiesResponseModel = entities.map(
+				(entity) => ({
+					price: entity.price,
+				})
+			);
+
+			presenter.ok(responseModel);
 		} catch (error) {
 			presenter.fail("An error occurred");
 		}
