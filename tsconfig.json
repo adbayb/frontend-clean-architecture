@@ -1,4 +1,4 @@
 {
     "extends": "@adbayb/ts-config",
-    "include": ["applications", "modules"]
+    "include": ["applications", "modules"],
 }
