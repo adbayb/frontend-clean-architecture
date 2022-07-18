@@ -1,4 +1,4 @@
-import { Property, PropertyGatewayPort } from "../../domain/entities/Property";
+import { Property, PropertyGatewayPort } from "../domain/entities/Property";
 
 export const createInMemoryPropertyGateway = (): PropertyGatewayPort => {
 	const DATA: Array<Property> = [
