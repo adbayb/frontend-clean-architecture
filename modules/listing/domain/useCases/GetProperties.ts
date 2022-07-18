@@ -7,10 +7,8 @@ import { PropertyGatewayPort } from "../entities/Property";
 /**
  * Ports definition
  */
-type GetPropertiesRequestModel = void;
-
-type GetPropertiesResponseModel = Array<{ price: number }>;
-
+export type GetPropertiesRequestModel = void;
+export type GetPropertiesResponseModel = Array<{ price: number }>;
 export type GetPropertiesInputPort =
 	UseCaseInputPort<GetPropertiesRequestModel>;
 export type GetPropertiesOutputPort =

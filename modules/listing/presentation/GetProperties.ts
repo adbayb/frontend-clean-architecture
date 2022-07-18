@@ -1,4 +1,7 @@
-import { GetPropertiesOutputPort } from "../domain/useCases/GetProperties";
+import {
+	GetPropertiesOutputPort,
+	GetPropertiesResponseModel,
+} from "../domain/useCases/GetProperties";
 
 /**
  * interface ViewModel extends Presenter, Controller {
@@ -17,6 +20,19 @@ import { GetPropertiesOutputPort } from "../domain/useCases/GetProperties";
 export const createGetPropertiesPresenter = (
 	setState: (value: any) => void
 ): GetPropertiesOutputPort => {
+	type ViewModel = {
+		isLoading: boolean;
+		data: GetPropertiesResponseModel;
+		error?: string;
+	};
+
+	const vm: ViewModel = {
+		isLoading: false,
+		data: [],
+	};
+
+	console.log(vm);
+
 	return {
 		ok(responseModel) {
 			setState(responseModel);

@@ -1,4 +1,4 @@
-export { createInMemoryPropertyGateway } from "./data/PropertyGateway";
-export { createInMemorySeekerGateway } from "./data/SeekerGateway";
-export { createGetPropertiesInteractor } from "./domain/useCases/GetProperties";
-export { createGetPropertiesPresenter } from "./presentation/GetProperties";
+export * from "./data/PropertyGateway";
+export * from "./data/SeekerGateway";
+export * from "./domain/useCases/GetProperties";
+export * from "./presentation/GetProperties";
