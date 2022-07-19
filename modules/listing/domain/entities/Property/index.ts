@@ -1,4 +1,5 @@
 import { AggregateRoot } from "../../../../sharedKernel/AggregateRoot";
+import { EntityGateway } from "../../../../sharedKernel/Entity";
 import { Owner } from "./Owner";
 
 // @note: Property is an aggregate root by including Owner entity since
@@ -10,7 +11,4 @@ export type Property = AggregateRoot<{
 	owner: Owner;
 }>;
 
-export interface PropertyGatewayPort {
-	getMany(): Property[];
-	getOne(id: Property["id"]): Property;
-}
+export type PropertyGatewayPort = EntityGateway<Property>;

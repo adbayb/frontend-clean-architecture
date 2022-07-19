@@ -1,6 +1,5 @@
 import { Property, PropertyGatewayPort } from "../domain/entities/Property";
 
-// @todo: add toDomain method (via EntityGateway<Entity, Methods> contract)
 export const createInMemoryPropertyGateway = (): PropertyGatewayPort => {
 	const DATA: Array<Property> = [
 		{
@@ -17,9 +16,6 @@ export const createInMemoryPropertyGateway = (): PropertyGatewayPort => {
 	];
 
 	return {
-		getMany() {
-			return DATA;
-		},
 		getOne(id) {
 			const property = DATA.find((property) => property.id === id);
 
@@ -28,6 +24,9 @@ export const createInMemoryPropertyGateway = (): PropertyGatewayPort => {
 			}
 
 			return property;
+		},
+		getMany() {
+			return DATA;
 		},
 	};
 };

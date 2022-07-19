@@ -26,5 +26,8 @@ export const createInMemorySeekerGateway = (): SeekerGatewayPort => {
 
 			return seeker;
 		},
+		getMany() {
+			return DATA;
+		},
 	};
 };
