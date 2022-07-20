@@ -4,6 +4,6 @@ export type Entity<Attributes extends Record<string, unknown> = {}> =
 	};
 
 export type EntityGateway<Ent extends Entity, Methods = {}> = Methods & {
-	getOne(id: Ent["id"]): Ent;
-	getMany(): Ent[];
+	getOne(id: Ent["id"]): Promise<Ent>;
+	getMany(): Promise<Ent[]>;
 };

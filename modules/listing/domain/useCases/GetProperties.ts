@@ -22,8 +22,8 @@ export type GetPropertiesOutputPort =
 export const createGetPropertiesInteractor = (
 	gateway: PropertyGatewayPort
 ): GetPropertiesInputPort => {
-	return function getProperties(_, presenter) {
-		const entities = gateway.getMany();
+	return async function getProperties(_, presenter) {
+		const entities = await gateway.getMany();
 
 		if (entities.length === 0) {
 			presenter.empty();

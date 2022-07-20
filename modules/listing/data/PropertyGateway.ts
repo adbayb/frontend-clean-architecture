@@ -1,3 +1,4 @@
+import { wait } from "../../sharedKernel/helpers";
 import { Property, PropertyGatewayPort } from "../domain/entities/Property";
 
 export const createInMemoryPropertyGateway = (): PropertyGatewayPort => {
@@ -16,7 +17,7 @@ export const createInMemoryPropertyGateway = (): PropertyGatewayPort => {
 	];
 
 	return {
-		getOne(id) {
+		async getOne(id) {
 			const property = DATA.find((property) => property.id === id);
 
 			if (!property) {
@@ -25,7 +26,9 @@ export const createInMemoryPropertyGateway = (): PropertyGatewayPort => {
 
 			return property;
 		},
-		getMany() {
+		async getMany() {
+			await wait(1000);
+
 			return DATA;
 		},
 	};

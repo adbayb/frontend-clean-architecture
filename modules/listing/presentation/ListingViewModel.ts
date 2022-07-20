@@ -18,7 +18,7 @@ export const createListingViewModel = () => {
 		// @section: states
 		state,
 		// @section: actions
-		getProperties(executeUseCase: GetPropertiesInputPort) {
+		async getProperties(executeUseCase: GetPropertiesInputPort) {
 			const presenter: GetPropertiesOutputPort = {
 				ok(responseModel) {
 					state.error.value = "";
@@ -38,7 +38,7 @@ export const createListingViewModel = () => {
 				},
 			};
 
-			return executeUseCase({}, presenter);
+			return await executeUseCase({}, presenter);
 		},
 		// @todo: saveToFavorite
 	};

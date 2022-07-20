@@ -17,7 +17,7 @@ export const createInMemorySeekerGateway = (): SeekerGatewayPort => {
 	];
 
 	return {
-		getOne(id) {
+		async getOne(id) {
 			const seeker = DATA.find((seeker) => seeker.id === id);
 
 			if (!seeker) {
@@ -26,7 +26,7 @@ export const createInMemorySeekerGateway = (): SeekerGatewayPort => {
 
 			return seeker;
 		},
-		getMany() {
+		async getMany() {
 			return DATA;
 		},
 	};
