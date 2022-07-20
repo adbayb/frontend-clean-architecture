@@ -7,10 +7,12 @@ import { PropertyGatewayPort } from "../entities/Property";
 /**
  * Ports definition
  */
-export type GetPropertiesRequestModel = void;
+export type GetPropertiesRequestModel = {};
 export type GetPropertiesResponseModel = Array<{ price: number }>;
-export type GetPropertiesInputPort =
-	UseCaseInputPort<GetPropertiesRequestModel>;
+export type GetPropertiesInputPort = UseCaseInputPort<
+	GetPropertiesRequestModel,
+	GetPropertiesOutputPort
+>;
 export type GetPropertiesOutputPort =
 	UseCaseOutputPort<GetPropertiesResponseModel>;
 
@@ -18,21 +20,23 @@ export type GetPropertiesOutputPort =
  * Service definition
  */
 export const createGetPropertiesInteractor = (
-	gateway: PropertyGatewayPort,
-	presenter: GetPropertiesOutputPort
+	gateway: PropertyGatewayPort
 ): GetPropertiesInputPort => {
-	return function getProperties() {
-		try {
-			const entities = gateway.getMany();
-			const responseModel: GetPropertiesResponseModel = entities.map(
-				(entity) => ({
-					price: entity.price,
-				})
-			);
+	return function getProperties(_, presenter) {
+		const entities = gateway.getMany();
 
-			presenter.ok(responseModel);
-		} catch (error) {
-			presenter.fail("An error occurred");
+		if (entities.length === 0) {
+			presenter.empty();
+
+			return;
 		}
+
+		const responseModel: GetPropertiesResponseModel = entities.map(
+			(entity) => ({
+				price: entity.price,
+			})
+		);
+
+		presenter.ok(responseModel);
 	};
 };

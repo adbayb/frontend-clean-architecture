@@ -6,6 +6,7 @@ export const createObservable = <Value>(value: Value) => {
 
 	return {
 		observe(callback: Observer<Value>) {
+			// @todo: collection of observers
 			observer = callback;
 		},
 		unobserve() {
@@ -15,11 +16,11 @@ export const createObservable = <Value>(value: Value) => {
 			return currentValue;
 		},
 		set value(nextValue) {
-			currentValue = nextValue;
-
-			if (observer) {
+			if (observer && currentValue !== nextValue) {
 				observer(nextValue);
 			}
+
+			currentValue = nextValue;
 		},
 	};
 };

@@ -1,17 +1,34 @@
-import { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
 	createGetPropertiesInteractor,
-	createGetPropertiesPresenter,
 	createInMemoryPropertyGateway,
+	createListingViewModel,
 } from "../../modules/listing";
 
 export const Root = () => {
-	const [properties, setProperties] = useState();
-	const presenter = createGetPropertiesPresenter(setProperties);
-	const gateway = createInMemoryPropertyGateway();
-	const getProperties = createGetPropertiesInteractor(gateway, presenter);
+	const { interactor, viewModel } = useMemo(() => {
+		const gateway = createInMemoryPropertyGateway();
+		const interactor = createGetPropertiesInteractor(gateway);
+		const viewModel = createListingViewModel();
 
-	console.log("Updated", properties);
+		return {
+			interactor,
+			viewModel,
+		};
+	}, []);
+	const [properties, setProperties] = useState(
+		viewModel.state.properties.value
+	);
+	const [error, setError] = useState(viewModel.state.error.value);
+
+	useEffect(() => {
+		viewModel.state.properties.observe(setProperties);
+		viewModel.state.error.observe(setError);
+	}, [viewModel.state.error, viewModel.state.properties]);
+
+	if (error) {
+		return <p>An error occurred: {error}</p>;
+	}
 
 	return (
 		<main
@@ -22,7 +39,12 @@ export const Root = () => {
 			}}
 		>
 			<h1>Properties</h1>
-			<button onClick={() => getProperties()}>Get properties</button>
+			<button onClick={() => viewModel.getProperties(interactor)}>
+				Get properties
+			</button>
+			{properties.map((property, index) => {
+				return <article key={index}>{property.price}</article>;
+			})}
 		</main>
 	);
 };
