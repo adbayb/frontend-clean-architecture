@@ -1,4 +1,4 @@
 export * from "./data/PropertyGateway";
 export * from "./data/SeekerGateway";
-export * from "./domain/useCases/GetProperties";
+export * from "./core/useCases/GetProperties";
 export * from "./presentation/ListingViewModel";

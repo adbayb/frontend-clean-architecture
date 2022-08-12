@@ -1,4 +1,4 @@
-import { Seeker, SeekerGatewayPort } from "../domain/entities/Seeker";
+import { Seeker, SeekerGatewayPort } from "../core/entities/Seeker";
 
 export const createInMemorySeekerGateway = (): SeekerGatewayPort => {
 	const DATA: Array<Seeker> = [

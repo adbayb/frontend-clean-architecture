@@ -1,5 +1,5 @@
 import { wait } from "../../sharedKernel/helpers";
-import { Property, PropertyGatewayPort } from "../domain/entities/Property";
+import { Property, PropertyGatewayPort } from "../core/entities/Property";
 
 export const createInMemoryPropertyGateway = (): PropertyGatewayPort => {
 	const DATA: Array<Property> = [

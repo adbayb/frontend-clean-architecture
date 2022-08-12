@@ -5,7 +5,7 @@ import {
 	GetPropertiesInputPort,
 	GetPropertiesOutputPort,
 	GetPropertiesResponseModel,
-} from "../domain/useCases/GetProperties";
+} from "../core/useCases/GetProperties";
 
 export const createListingViewModel = () => {
 	const state = {
